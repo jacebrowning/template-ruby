@@ -1,0 +1,10 @@
+language: ruby
+
+cache:
+  bundler: true
+  directories:
+  - vendor
+
+install: make depends-ci
+
+script: make ci
