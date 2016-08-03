@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+ruby '{{cookiecutter.ruby_version}}'
+
+gem 'test'

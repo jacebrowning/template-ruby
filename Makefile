@@ -1,52 +1,26 @@
-BE := bundle exec
+# match default value of project_name from cookiecutter.json
+COOKIE := TemplateDemo
 
-# MAIN TARGETS #################################################################
+BASE_CC := {{cookiecutter.project_name}}
+CC_FILES := $(BASE_CC)/* $(BASE_CC)/*/* $(BASE_CC)/*/*/*
 
 .PHONY: all
-all: depends
+all: $(COOKIE)
+	cd $(COOKIE); make
 
 .PHONY: ci
-ci: check test
+ci: $(COOKIE)
+	cd $(COOKIE); make ci
 
-# DEPENDENCY INSTALLATION ######################################################
+$(COOKIE): Makefile cookiecutter.json $(CC_FILES)
+	cat cookiecutter.json
+	cookiecutter . --no-input --overwrite-if-exists
 
-VENDOR_DIR := vendor
-DEPENDS_FLAG := $(VENDOR_DIR)/.depends
-
-.PHONY: depends
-depends: depends-ci
-
-.PHONY: depends-ci
-depends-ci: $(DEPENDS_FLAG)
-$(DEPENDS_FLAG): Gemfile*
-	bundle install --path $(VENDOR_DIR)
-	@ touch $@
-
-.PHONY: install
-install: depends-ci
-
-.PHONY: update
-update:
-	bundle update
-
-# STATIC ANALYSIS ##############################################################
-
-.PHONY: check
-check: depends-ci
-	@ echo TODO: add static analytis
-
-# UNIT/INTEGRATION TESTS #######################################################
-
-.PHONY: test
-test: depends-ci
-	@ echo TODO: add static analytis
-
-# CLEANUP ######################################################################
+.PHONY: watch
+watch:
+	pip install sniffer MacFSEvents
+	sniffer
 
 .PHONY: clean
 clean:
-	@ touch Gemfile
-
-.PHONY: clean-all
-clean-all: clean
-	rm -rf $(VENDOR_DIR)
+	rm -rf $(COOKIE)
