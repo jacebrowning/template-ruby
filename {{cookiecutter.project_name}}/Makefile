@@ -6,7 +6,7 @@ BE := bundle exec
 all: install
 
 .PHONY: ci
-ci: check test
+ci: check test ## Run all tasks that determine CI status
 
 # SYSTEM DEPENDENCIES ##########################################################
 
