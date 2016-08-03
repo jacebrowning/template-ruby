@@ -3,7 +3,7 @@ language: ruby
 cache:
   bundler: true
   directories:
-    - vendor
+    - vendor/bundler
 
 before_install:
   - make doctor
