@@ -1,5 +1,4 @@
-Unix: [![Unix Build Status](http://img.shields.io/travis/jacebrowning/template-ruby/master.svg)](https://travis-ci.org/jacebrowning/template-ruby)
-Windows: [![Windows Build Status](https://img.shields.io/appveyor/ci/jacebrowning/template-ruby.svg)](https://ci.appveyor.com/project/jacebrowning/template-ruby)
+[![Build Status](http://img.shields.io/travis/jacebrowning/template-ruby/master.svg)](https://travis-ci.org/jacebrowning/template-ruby)
 
 # Overview
 
