@@ -1,8 +1,6 @@
 sudo: required
 
 language: ruby
-ruby:
-- 2.3.0
 
 cache:
   pip: true
