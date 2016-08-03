@@ -6,6 +6,9 @@ cache:
   pip: true
   bundler: true
 
+install:
+  - pip install cookiecutter
+
 script:
   - make ci
 
