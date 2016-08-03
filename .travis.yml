@@ -1,12 +1,10 @@
-language: python
-python:
-- 3.5
+language: ruby
+ruby:
+- 2.3.0
 
-cache: pip
-
-install:
-  - pip install cookiecutter
-  - cookiecutter --version
+cache:
+  pip: true
+  bundler: true
 
 script:
   - make ci
