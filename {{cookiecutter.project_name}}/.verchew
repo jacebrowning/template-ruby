@@ -1,0 +1,12 @@
+[Make]
+
+cli = make
+
+version = GNU Make
+
+
+[Ruby]
+
+cli = ruby
+
+version = {{cookiecutter.ruby_version}}

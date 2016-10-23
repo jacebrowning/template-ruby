@@ -12,15 +12,14 @@ ci: check test ## Run all tasks that determine CI status
 
 .PHONY: doctor
 doctor:  ## Confirm system dependencies are available
-	@ echo "Checking Ruby version:"
-	@ ruby --version | tee /dev/stderr | grep -q `cat .ruby-version`
+	bin/verchew
 
 # PROJECT DEPENDENCIES #########################################################
 
 GEMS := vendor/bundler
 
 .PHONY: install
-install: $(GEMS) ## Install all project dependnecies
+install: $(GEMS) ## Install all project dependencies
 
 $(GEMS): Gemfile*
 	bundle install --path $@

@@ -1,26 +1,33 @@
-# match default value of project_name from cookiecutter.json
-COOKIE := TemplateDemo
+SOURCE_FILES = Makefile cookiecutter.json $(shell find {{cookiecutter.project_name}})
 
-DIRECTORIES := {{cookiecutter.project_name}}
-FILES := $(DIRECTORIES)/*
+GENERATED_PROJECT := TemplateDemo
+
+# MAIN #########################################################################
 
 .PHONY: all
-all: $(COOKIE)
-	cd $(COOKIE); make
+all: $(GENERATED_PROJECT)
+	make $@ -C $<
+
+.PHONY: doctor
+doctor: $(GENERATED_PROJECT)
+	make $@ -C $<
 
 .PHONY: ci
-ci: $(COOKIE)
-	cd $(COOKIE); make ci
-
-$(COOKIE): Makefile cookiecutter.json $(FILES)
-	cat cookiecutter.json
-	cookiecutter . --no-input --overwrite-if-exists
+ci: $(GENERATED_PROJECT)
+	make $@ -C $<
 
 .PHONY: watch
 watch:
-	pip install sniffer MacFSEvents
 	sniffer
+
+# BUILD ########################################################################
+
+$(GENERATED_PROJECT): $(SOURCE_FILES)
+	cat cookiecutter.json
+	cookiecutter . --no-input --overwrite-if-exists
+
+# CLEANUP ######################################################################
 
 .PHONY: clean
 clean:
-	rm -rf $(COOKIE)
+	rm -rf $(GENERATED_PROJECT)
