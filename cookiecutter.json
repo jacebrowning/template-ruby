@@ -5,7 +5,6 @@
     "github_repo": "template-ruby-demo",
     "default_branch": "master",
     "project_name": "TemplateDemo",
-    "package_name": "demo",
     "project_short_description": "A sample project templated from jacebrowning/template-ruby.",
     "ruby_version": "2.3.0"
 }
